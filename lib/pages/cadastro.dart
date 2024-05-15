@@ -9,7 +9,7 @@ class Cadastro extends StatefulWidget {
   State<Cadastro> createState() => _CadastroState();
 }
 
-class _CadastroState extends State<Cadastro> {
+class _CadastroState extends State<Cadastro> {  //Importar classes e criar strings
   String? nome;
   String? sobrenome;
   String? email;
@@ -37,7 +37,7 @@ class _CadastroState extends State<Cadastro> {
     print('Dados enviados para o Workbench com sucesso');
   }
 
-  Future<void> realizarCadastro() async {
+  Future<void> realizarCadastro() async {  //Importar dados API
     final url = Uri.parse('http://10.91.234.33:3000/clientes/cadastro');
     try {
       final response = await http.post(
@@ -57,7 +57,7 @@ class _CadastroState extends State<Cadastro> {
         },
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200) {  //Verificação de cadastro
         // Cadastro bem-sucedido
         await enviarParaWorkbench(); // Enviar para o Workbench
         setState(() {
@@ -74,7 +74,7 @@ class _CadastroState extends State<Cadastro> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  //Estilização
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -90,7 +90,7 @@ class _CadastroState extends State<Cadastro> {
                 left: 0,
                 right: 0,
                 child: SizedBox(
-                  height: height * 0.3, // Altura da imagem ajustável
+                  height: height * 0.3, // Estilo de imagem 
                   child: Image.asset(
                     'assets/menu-cadastrar.png', // Altere para o caminho da sua imagem do menu
                     fit: BoxFit.cover,
@@ -127,7 +127,7 @@ class _CadastroState extends State<Cadastro> {
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Colors
-                                          .red, // Cor do texto quando selecionado
+                                          .red, // 130 a 366 formulário cadastro
                                     ),
                                   ),
                                   labelText: 'Nome',
@@ -364,7 +364,7 @@ class _CadastroState extends State<Cadastro> {
                                 ),
                               ),
                               const SizedBox(
-                                  height: 20), // Espaçamento aumentado
+                                  height: 20), // Aceitar os termos
                               CheckboxListTile(
                                 title: Text(
                                   'Aceitar termos',
@@ -381,7 +381,7 @@ class _CadastroState extends State<Cadastro> {
                                 },
                               ),
                               const SizedBox(
-                                  height: 60), // Espaçamento aumentado
+                                  height: 60), // Botão de cadastro
                               ElevatedButton(
                                 onPressed: enabled
                                     ? () async {
@@ -413,7 +413,7 @@ class _CadastroState extends State<Cadastro> {
                           ),
                         ),
                         if (cadastradoComSucesso)
-                          Container(
+                          Container( //Verificar botão
                             color: Colors.black.withOpacity(0.8),
                             child: Center(
                               child: Card(
